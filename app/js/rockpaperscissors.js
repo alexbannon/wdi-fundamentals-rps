@@ -2,7 +2,29 @@ var computerMove;
 var playerMove;
 function getInput() {
     console.log("Please choose either 'rock', 'paper', or 'scissors'.");
-    playerMove = prompt();
+    playerMove = prompt().toLowerCase();
+    if(!(playerMove === "rock" || playerMove === "paper" || playerMove === "scissors")) {
+        console.log("I'm sorry I don't understand your input. Please type 'rock', 'paper', or 'scissors'.");
+        playerMove = prompt().toLowerCase();
+        if(!(playerMove === "rock" || playerMove === "paper" || playerMove === "scissors")) {
+            console.log("Clearly it's too hard for you to write in a single word, so I'm just going to auto-assign you rock, paper, or scissors...");
+            var placeholder = Math.random();
+            if (placeholder < 0.33) {
+                playerMove = "rock";
+            } else if (placeholder < 0.66) {
+                playerMove = "paper";
+            } else {
+                playerMove = "scissors";
+            }
+            return playerMove;
+        }
+        else {
+            return playerMove;
+        }
+    }
+    else {
+        return playerMove;
+    }
 }
 function randomPlay() {
     var randomNumber = Math.random();
@@ -54,7 +76,7 @@ function getWinner(playerMove,computerMove) {
 }
 
 function playToFive() {
-    console.log("Let's play Rock, Paper, Scissors");
+    console.log("Let's play Rock, Paper, Scissors. First to 5 wins!");
     var playerWins = 0;
     var computerWins = 0;
     do {
